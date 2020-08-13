@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Vue World</title>  
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<style>
+    body {
+    display: flex;
+    flex-direction: column;
+    margin: 0; padding: 0;
+    height: 100vh;
+    background-color: #27272A;
+    background: linear-gradient(to right, #0D0D0D, #18062A) no-repeat center center fixed;
+    font-family: 'Roboto Mono';
+    color: ghostwhite;
+  }
+  .box {
+    margin: .5rem auto; padding: 1rem 2rem;
+    border: 1px solid aliceblue;
+    border-radius: 2px;
+  }
+  h1, h2 {text-align: center;}
+</style>
+<body>
+  <section class="box">
+    <header id="hiya">
+      <h1>{{ message }}</h1>
+    </header>
+    <div id="hover">
+      <span v-bind:title="message" v-if="visible">
+        Hover me for Date!!
+      </span>
+    </div>  
+  </section>
+  <section class="box"> 
+    <main >
+      <section id='Hats'>
+        <h2>Hats for cats</h2>
+        <h3>{{ product }}</h3>
+        <p>{{ textDescription }}</p>
+      </section>
+      <section id='coats'>
+        <h2>Coats for cats</h2>
+        <h3>{{ product }}</h3>
+        <p>{{ textDescription }}</p>
+      </section>
+      <section id='todo'>
+        <ol>
+          <h2>Do this stuff</h2>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ol>    
+      </section>
+      <section id="mirror">
+        <h2>Le Magic Mirror</h2>
+        <button v-on:click="leReverso">Look into the mirror</button>
+        <p>{{ message }}</p>
+      </section>
+      <section id="form">
+        <h2>Type in the box</h2>
+        <input v-model="message">
+        <p>{{ message }}</p>
+      </section>
+      <section id="dyna">
+        <h2>Todos with components</h2>
+        <ol>
+          <todo-item
+            v-for="item in theList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+          ></todo-item>
+        </ol>
+      </section>
+    </main>
+  </section>
+  
+</body>
+<script src="main.js"></script>
+<script>
+  let hello = new Vue({
+    el: '#hiya',
+    data: {message: 'Hiya Vue World :)'}
+  })
+</script>
+</html>
